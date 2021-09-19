@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <title>Marvel</title>
+</head>
+
+<body style="background-color: black;">
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+    style="position: sticky; width: 100%; top: 0; bottom: 0; z-index: 3;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">MARVEL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">COMICS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/movies">MOVIES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/characters">CHARACTERS</a>
+          </li>
+        </ul>
+        <ul class=" me-2 navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">Cart
+              <span class="badge bg-info">{{request.session.cart.keys|length}}</span>
+            </a>
+          </li>
+          {% if request.session.costomer %}
+          <li class="nav-item">
+            <a class="nav-link" href="Orders">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/login">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- carousel Caption -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-interval="1000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-interval="1000">
+        <img src="/static/books/images/home img/home img 1.jpg" class="img-responsive w-100 p-2" alt="..."
+          style="height: 35rem; opacity: 0.6;">
+        <div class="carousel-caption" style="padding-bottom: 4rem;">
+          <h1 style="color: red; font-weight: bold; font-family: 'Russo One', sans-serif; padding-bottom: 1rem;">UNLOCK
+            THE MARVEL UNIVERSE
+          </h1>
+          <p> <span style="font-size: 1.5rem; font-weight: bold;">Start your 7-day free trial and get access to over
+              28,000 digital comics,
+              then only $9.99/month*. Cancel Anytime</span> </p>
+          <button class="btn btn--secondary" style="margin-top: 1rem;">
+            <span class="btn__content">Enroll Now</span>
+          </button>
+          <div style="font-size: 1.2rem; margin-top: 3rem;" class="register">Already a subscriber ? <button
+              class="r-button">Start reading</button></div>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="1000">
+        <img src="/static/books/images/home img/home img 2.jpg" class="img-fluid w-100 p-2" alt="..."
+          style="height: 35rem; opacity: 0.5;">
+        <div class="carousel-caption" style="padding-bottom: 4rem;">
+          <h1 style="color: red; font-weight: bold; font-family: 'Russo One', sans-serif; padding-bottom: 1rem;">UNLOCK
+            THE MARVEL UNIVERSE
+          </h1>
+          <p> <span style="font-size: 1.5rem;  font-weight: bold;">Start your 7-day free trial and get access to over
+              28,000 di1.2ital
+              comics,
+              then only $9.99/month*. Cancel Anytime</span> </p>
+          <button class="btn btn--secondary" style="margin-top: 1rem;">
+            <span class="btn__content">Enroll Now</span>
+          </button>
+          <div style="font-size: 1.2rem; margin-top: 3rem;" class="register">Already a subscriber ? <button
+              class="r-button">Start reading</button></div>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="1000">
+        <img src="/static/books/images/home img/home img 3.jpg" class="img-fluid w-100 p-2" alt="..."
+          style="height: 35rem; opacity: 0.5;">
+        <div class="carousel-caption" style="padding-bottom: 4rem;">
+          <h1 style="color: red; font-weight: bold; font-family: 'Russo One', sans-serif; padding-bottom: 1rem;">UNLOCK
+            THE MARVEL UNIVERSE
+          </h1>
+          <p> <span style="font-size: 1.5rem;  font-weight: bold;">Start your 7-day free trial and get access to over
+              28,000 digital comics,
+              then only $9.99/month*. Cancel Anytime</span> </p>
+          <button class="btn btn--secondary" style="margin-top: 1rem;">
+            <span class="btn__content">Enroll Now</span>
+          </button>
+          <div style="font-size: 1.2rem; margin-top: 3rem;" class="register">Already a subscriber ? <button
+              class="r-button">Start reading</button></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- containers -->
+  <div class="Containers">
+    <div style="margin: 3rem 1rem 0rem;">
+      <img src="/static/books/images/home img/content img 1.jpg" class="img-fluid w-100 p-2" alt="...">
+      <div class="row-2 content-para">
+        <p>Universe-shattering Comic events including: Civil <br> War, Age of Ultron, Secret Wars and more!</p>
+        <button class="btn btn--secondary btn1 " style="margin-top: 1rem; background-color: red;">
+          <span class="btn__content" style="background-color: white; color: black;">Enroll Now</span>
+        </button>
+      </div>
+    </div>
+    <div style="margin: 3rem 1rem 0rem;;">
+      <img src="/static/books/images/home img/content img 2.jpg" class="img-fluid w-100 p-2" alt="...">
+      <div class="content-para row-2">
+        <p>Guide your reading with curated reading lists spotlighting Captain America, <br> Doctor Strange, Luke Cage,
+          and
+          all your favorite heroes! </p>
+        <button class="btn btn--secondary btn1" style="margin-top: 1rem; background-color: red;">
+          <span class="btn__content" style="background-color: white; color: black;">Enroll Now</span>
+        </button>
+      </div>
+    </div>
+    <div style="margin: 3rem 1rem 0rem;;">
+      <img src="/static/books/images/home img/content img 3.jpg" class="img-fluid w-100 p-2" alt="...">
+      <div class="content-para row-2">
+        <p>More classic and newer issues added every week of all your must-read series, including Amazing Spider- <br>
+          Man,
+          Avengers, X-Men - as soon as 3 months after they hit the shelves!</p>
+        <button class="btn btn--secondary btn1" style="margin-top: 1rem; background-color: red;">
+          <span class="btn__content" style="background-color: white; color: black;">Enroll Now</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- FAQ -->
+  <div class="containers FAQ" sty>
+    <h3
+      style="font-size: 2.5rem; text-align: center; font-family: 'Russo One', sans-serif; word-spacing: .2rem; color: white; margin-top: 5rem;">
+      FREQUENTLY ASKED QUESTIONS</h3>
+    <div class="accordion" id="accordionExample" style="padding: 2rem 8rem 2rem;">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne"
+            style="color: black; background-color: rgba(196, 180, 180, 0.479); font: size 5rem; font-weight: bold">
+            What is Marvel Unlimited?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>Marvel Unlimited is our member subscription service that gives members unlimited access to over
+              28,000 issues of Marvel's classic and newer titles, delivered digitally through your desktop web browser
+              and the Marvel Unlimited mobile app. <br><br>
+
+              More classic and newer issues are added every week — as soon as 3 months after they hit stores! <br> <br>
+
+              The free Marvel Unlimited app can be downloaded from <a href="" style="color: red;">iTunes®</a> or <a
+                href="" style="color: red;">google play</a>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+            style="color: black; background-color: rgba(196, 180, 180, 0.479); font: size 5rem; font-weight: bold">
+            What books are included in Marvel Unlimited? </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>We've selected some of our favorite titles to include in the Marvel Unlimited collection. We've
+              included a broad range of characters and fan favorite series and we're adding new comics every week. There
+              are over 28,000 issues available to read, with new titles added weekly! <br> <br>
+
+              To see upcoming releases into Marvel Unlimited, check out the release calendar located in the Comics
+              section of the Marvel website here.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+            style="color: black; background-color: rgba(196, 180, 180, 0.479); font: size 5rem; font-weight: bold">
+            How can I cancel my subscription?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>If you do not wish for your subscription to renew at the end of your term, you can either: <br> <br>
+
+              Cancel your subscription through the "Marvel Unlimited Membership Management" page by logging in to your
+              account and then going to the following link: https://mu.marvel.com/account/index.html and selecting
+              "Cancel Subscription" and then clicking the "Cancel Subscription" button on the pop-up modal. <br> <br>
+
+              Reach out to Marvel Customer Support at help.marvel.com to request a cancellation. <br> <br>
+
+              If you purchased your membership through iTunes or Google Play, please follow the respective links below
+              for more information on how to cancel your membership: <br> <br>
+
+              <a href="" style="color: red;">iTunes®</a> <br>
+              <a href="" style="color: red;">Google Play</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+</html>

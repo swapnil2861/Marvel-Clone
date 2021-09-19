@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body style="background-color: black;">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="position: sticky; width: 100%; top: 0; bottom: 0; z-index: 3;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">MARVEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">COMICS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">MOVIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">CHARACTERS</a>
+                    </li>
+                </ul>
+                <ul class=" me-2 navbar-nav">
+                    <a class="nav-link" href="/cart">Cart<span
+                            class="badge bg-info">{{request.session.cart.keys|length}}</span> </a>
+                    </li>
+                    {% if request.session.costomer %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="Orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Signup page  -->
+    <img src="/static/books/images/Signup/marvel logo.png" class="img-responsive p-2" alt="..."
+        style="display: block; width: 10rem; height: 5rem; margin: 2rem auto 0rem;">
+    <div id="reg-page">
+        <div class="p-4 m-4">
+            <div class="col-lg-5">
+                <h3 style="font-family: 'Russo One', sans-serif; color: white;">Create An Account</h3>
+                <form action="/signup" method="POST">
+                    {% csrf_token%}
+                    {% if error%}
+                    <div class="alert alert-primary" role="alert">{{error}}
+                    </div>
+                    {% endif %}
+                    {% if error1%}
+                    <div class="alert alert-primary" role="alert">{{error1}}
+                    </div>
+                    {% endif %}
+                    {% if error2%}
+                    <div class="alert alert-primary" role="alert">{{error2}}
+                    </div>
+                    {% endif %}
+                    {% if error3%}
+                    <div class="alert alert-primary" role="alert">{{error3}}
+                    </div>
+                    {% endif %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Name :</label>
+                        <input type="text" class="form-control" name="name" value="{{values.first_name}}"
+                            placeholder="Enter your name" id="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Email :</label>
+                        <input type="email" class="form-control" name="email" value="{{values.email}}"
+                            placeholder="Enter your email" id="" required>
+                        <div id="emailHelp" class="form-text" style="color: white;">We'll never share your email with
+                            anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Create Password :</label>
+                        <input type="password" class="form-control" name="password" placeholder="create your password"
+                            id="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Confirm Password :</label>
+                        <input type="password" class="form-control" name="c-password"
+                            placeholder="Re-Enter your password" id="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Number :</label>
+                        <input type="text" class="form-control" name="Number" value="{{values.phone}}"
+                            placeholder="Enter your Number" id="" required>
+                    </div>
+                    <input type="submit" class="btn s-button"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- bootstrap javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</html>

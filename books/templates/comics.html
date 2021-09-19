@@ -1,0 +1,203 @@
+{% load cart %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Marvel || Comics</title>
+</head>
+
+<body style="background: rgb(199, 193, 193)">
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="position: sticky; width: 100%; top: 0; bottom: 0; z-index: 3;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">MARVEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">COMICS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">MOVIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">CHARACTERS</a>
+                    </li>
+                </ul>
+                <ul class=" me-2 navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart<span
+                                class="badge bg-info">{{request.session.cart.keys|length}}</span> </a>
+                    </li>
+                    {% if request.session.costomer %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="Orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main -->
+    <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel"
+        style="height: 38rem; background-color: black;">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                aria-label="Slide 6"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/books/images/black widow bg.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/books/images/captain america bg.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/books/images/iron man bg.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/books/images/loki bg.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/books/images/vision bg 1.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/books/images/wanda maximoff bg.jpg" style="height: 38rem; opacity: 0.5;"
+                    class="img-responsive w-100" alt="...">
+            </div> -->
+        </div>
+
+        <button style="height: 38rem;" class="carousel-control-prev" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button style="height: 38rem;" class="carousel-control-next" type="button"
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!-- section heading -->
+        <h3
+            style="margin: 2rem 1rem 2rem; color: black; border-bottom: 5px double red; font-size: 2rem; font-family: 'Russo One', sans-serif;">
+            NEW RELEASED | JAN 2020
+        </h3>
+        <!-- FILTER -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="background-color: black; color: white; font-family: 'Russo One', sans-serif; font-size: 1.3rem; margin-top: -1.2rem; padding-left: 2rem;">
+                Explore More
+            </a>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/"
+                        style="font-size: 1.5rem; color: white; width: 15rem; font-family: 'Russo One', sans-serif;">All
+                        Products</a></li>
+                <hr style="color: white;">
+                {% for catagory in catagories %}
+                <li><a class="dropdown-item" href="/?catagory={{catagory.id}}"
+                        style="font-size: 1.2rem; color: white; width: 15rem; font-family: 'Russo One', sans-serif;">{{catagory.name}}</a>
+                </li>
+                <hr style="color: white;">
+                {% endfor %}
+            </ul>
+        </li>
+        <!-- COMICS -->
+        <div class="container-fluid">
+            <div class="row">
+                {% for product in products %}
+                <div class="card my-5" id="{{product.id}}"
+                    style="width: 15rem; height: 30rem; margin:auto; border: none; background: none;">
+                    <a href="/pro_details?product={{product.id}}"><img src="{{product.image.url}}"
+                            class="card-img-top pt-2" alt="" style=" box-shadow: 10px 15px 5px gray;"></a>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mt-1"
+                            style="font-family: 'Russo One', sans-serif; height: 3rem; width: 13rem;">
+                            {{product.name}}</h5>
+                        <h5 class="card-title fw-bold mt-1" style="font-family: 'Russo One', sans-serif;">
+                            {{product.price}}$</h5>
+                    </div>
+                    <!-- {{product | is_in_cart:request.session.cart }} -->
+                    <div class="row">
+                        {% if product|is_in_cart:request.session.cart%}
+                        <div class="row">
+                            <form action="/#{{product.id}}" method="POST" class="col-2">
+                                {% csrf_token %}
+                                <input hidden type="text" name="product" value="{{product.id}}">
+                                <input hidden type="text" name="remove" value='true'>
+                                <input type="submit" value="-" class="btn-dark btn-block">
+                            </form>
+                            <div class="text-center col">{{product|cart_count:request.session.cart}} in cart</div>
+                            <form action="/#{{product.id}}" method="POST" class="col-2">
+                                {% csrf_token %}
+                                <input hidden type="text" name="product" value="{{product.id}}">
+                                <input type="submit" value="+" class="btn-dark btn-block">
+                            </form>
+                        </div>
+                        {% else %}
+                        <form action="/#{{product.id}}" method="POST" class="col-6">
+                            {% csrf_token %}
+                            <input hidden type="text" name="product" value="{{product.id}}">
+                            <input type="submit" style="width: 14rem;" value="Add To Cart">
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

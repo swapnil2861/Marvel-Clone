@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <title>Marvel</title>
+</head>
+<!-- STYLE  -->
+<style>
+    #pro_details::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("/static/books/images/avenger\ logo.jpg")no-repeat center center/cover;
+        z-index: -1;
+        display: block;
+        top: 0px;
+        filter: blur(8px);
+    }
+
+    .col {
+        padding: 2rem;
+    }
+</style>
+
+<body style="background-color: black;">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="position: sticky; width: 100%; top: 0; bottom: 0; z-index: 3;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">MARVEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">COMICS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">MOVIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">CHARACTERS</a>
+                    </li>
+                </ul>
+                <ul class=" me-2 navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart
+                            <span class="badge bg-info">{{request.session.cart.keys|length}}</span>
+                        </a>
+                    </li>
+                    {% if request.session.costomer %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="Orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="pro_details">
+        <div class="row m-4 p-4">
+            {% for product in products %}
+            <div class="pro_image col-6 m-auto">
+                <img src="{{product.image.url}}" alt="no image" style="width: 20rem; height: 30rem;">
+            </div>
+            <div class="pro_details col-6">
+                <h2 style="font-family: 'Russo One', sans-serif; margin-bottom: 2rem; color: white;"><b>{{product.name}}</b></h2>
+                <div class="row row-cols-2" style="color: white;">
+                    <div class="col">
+                        <h5>Published :</h5>
+                        <p>{{product.published}}</p>
+                    </div>
+                    <div class="col">
+                        <h5>Writer :</h5>
+                        <p>{{product.writer}}</p>
+                    </div>
+                    <div class="col">
+                        <h5>Cover Artist :</h5>
+                        <p>{{product.artist}}</p>
+                    </div>
+                    <div class="col">
+                        <h5>Penciler :</h5>
+                        <p>{{product.penciler}}</p>
+                    </div>
+                </div>
+                <p style="color: white;">WITNESS THE BIRTH OF A NEW SYMBIOTE! Four issues into the Carnage event of the
+                    summer and the bodies
+                    just keep piling up – including some of the Venomaniacs the Mighty Marveldom know and love! But now
+                    is not a time to mourn for fallen heroes (or their symbiotes). CARNAGE is on the loose, and he's
+                    building an army…
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+    crossorigin="anonymous"></script>
+
+</html>

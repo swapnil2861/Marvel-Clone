@@ -1,0 +1,150 @@
+{% load cart %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Marvel || Comics</title>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+        style="position: sticky; width: 100%; top: 0; bottom: 0; z-index: 3;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white; font-weight: bold;">MARVEL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">COMICS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">MOVIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/characters">CHARACTERS</a>
+                    </li>
+                </ul>
+                <ul class=" me-2 navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart<span
+                                class="badge bg-info">{{request.session.cart.keys|length}}</span> </a>
+                    </li>
+                    {% if request.session.costomer %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="Orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">SignUp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- products -->
+    <div class="container">
+        <div class="border rounded p-4 m-4">
+            <table class="table">
+                <h1>YOUR CART</h1>
+                <thead>
+                    <tr>
+                        <th>Sno.</th>
+                        <th>image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img style="height: 3rem; width: 2.5rem;" src="{{product.image.url}}" alt=""></td>
+                        <td>{{product.name}}</td>
+                        <td>${{product.price}}</td>
+                        <td>{{product|cart_count:request.session.cart}}</td>
+                        <td>${{product|price_total:request.session.cart}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4"></th>
+                        <th>Total</th>
+                        <th>${{products|cart_price_total:request.session.cart}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+            {% if request.session.costomer %}
+            <div class="m-3 p-3">
+                <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    style="color: white; font-size: 1.5rem; float: right; width: 13rem; height: 3rem;">Checkout</a>
+            </div>
+            {% else %}
+            <div class="alert alert-danger" role="alert">
+                You can simply <a href="login" class="alert-link"> Login</a> Here to place orders.
+              </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Check out form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/check-out" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Phone</label>
+                            <input type="text" name="phone" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="float: right;">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</html>
